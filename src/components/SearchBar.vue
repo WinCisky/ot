@@ -22,8 +22,8 @@ const count = ref(0)
                     <Search class="search__icon" />
                 </div>
             </div>
-            <div class="search__results" id="search__results" ref="results" :class="{ open: searched }">
-                <div class="result" v-for="item in results" @click="openSearchResult(item.shop)">
+            <div class="search__results" id="search__results" :class="{ open: searched }">
+                <div class="result" v-for="item in results" :key="item.name" @click="openSearchResult(item.shop)">
                     {{ item.name }}
                 </div>
             </div>

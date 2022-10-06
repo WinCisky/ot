@@ -70,11 +70,13 @@ export default {
     },
     methods: {
         loadContainerData() {
-            const box = (this.$refs as any).container.getBoundingClientRect();
-            this.anchor_x = box.left + box.width / 2;
-            this.anchor_y = box.top + box.height / 2;
-            this.box_width = box.width;
-            this.box_heigth = box.height;
+            const box = (this.$refs as any).container?.getBoundingClientRect();
+            if(box) {
+                this.anchor_x = box.left + box.width / 2;
+                this.anchor_y = box.top + box.height / 2;
+                this.box_width = box.width;
+                this.box_heigth = box.height;
+            }
         },
         handleScroll() {
             this.loadContainerData();
