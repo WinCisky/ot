@@ -181,7 +181,6 @@ export default {
 }
 
 .result:hover:last-child {
-    background: #616161;
     border-radius: 0 0 15px 15px;
 }
 
@@ -201,6 +200,22 @@ export default {
         border-left: 1px solid #bdbdbd;
         border-top: 1px solid #bdbdbd;
         border-bottom: 1px solid #bdbdbd;
+        background-color: #fff;
+    }
+
+    .search__results.open{
+        background-color: #fff;
+        border-bottom: 1px solid #bdbdbd;
+        border-left: 1px solid #bdbdbd;
+        border-right: 1px solid #bdbdbd;
+    }
+
+    .search__results.open:before{
+        background-color: #f5f5f5;
+    }
+
+    .result:hover{
+        background-color: #EEEEEE;
     }
 }
 </style>

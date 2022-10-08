@@ -37,6 +37,10 @@ import Ot from '../components/icons/Ot.vue';
   .logo.opentrust {
     fill: #2563EB;
   }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #E0E0E0aa);
+  }
 }
 </style>
       
