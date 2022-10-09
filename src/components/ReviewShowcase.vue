@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n';
 
 defineProps({
     msg: String
+})
+
+const { t } = useI18n({
+    useScope: 'global'
 })
 
 // const container = document.getElementById("container");
@@ -28,13 +33,13 @@ const count = ref(0)
                         <span class='active'>&#9733;</span>
                     </div>
                     <div class="content">
-                        Really good shop.
+                        {{ t('Really good shop.') }}
                     </div>
                     <div class="name">
-                        Simone
+                        {{ t('Simone') }}
                     </div>
                     <div class="time">
-                        20 min ago
+                        {{ t('20 min ago') }}
                     </div>
                 </li>
             </div>
@@ -71,7 +76,7 @@ export default {
     methods: {
         loadContainerData() {
             const box = (this.$refs as any).container?.getBoundingClientRect();
-            if(box) {
+            if (box) {
                 this.anchor_x = box.left + box.width / 2;
                 this.anchor_y = box.top + box.height / 2;
                 this.box_width = box.width;

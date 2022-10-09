@@ -3,740 +3,739 @@
  * Do not make direct changes to the file.
  */
 
- export interface paths {
-    "/": {
-      get: {
-        responses: {
-          /** OK */
-          200: unknown;
-        };
+export interface paths {
+  "/": {
+    get: {
+      responses: {
+        /** OK */
+        200: unknown;
       };
     };
-    "/shop_reviews": {
-      get: {
-        parameters: {
-          query: {
-            name?: parameters["rowFilter.shop_reviews.name"];
-            description?: parameters["rowFilter.shop_reviews.description"];
-            score?: parameters["rowFilter.shop_reviews.score"];
-            shop?: parameters["rowFilter.shop_reviews.shop"];
-            created_at?: parameters["rowFilter.shop_reviews.created_at"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+  };
+  "/shop_reviews": {
+    get: {
+      parameters: {
+        query: {
+          name?: parameters["rowFilter.shop_reviews.name"];
+          description?: parameters["rowFilter.shop_reviews.description"];
+          score?: parameters["rowFilter.shop_reviews.score"];
+          shop?: parameters["rowFilter.shop_reviews.shop"];
+          created_at?: parameters["rowFilter.shop_reviews.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["shop_reviews"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
         };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["shop_reviews"][];
+        };
+        /** Partial Content */
+        206: unknown;
       };
     };
-    "/stores": {
-      get: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.stores.shop"];
-            name?: parameters["rowFilter.stores.name"];
-            email?: parameters["rowFilter.stores.email"];
-            dismissed?: parameters["rowFilter.stores.dismissed"];
-            shown_shop?: parameters["rowFilter.stores.shown_shop"];
-            shown_email?: parameters["rowFilter.stores.shown_email"];
-            shown_name?: parameters["rowFilter.stores.shown_name"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+  };
+  "/stores": {
+    get: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.stores.shop"];
+          name?: parameters["rowFilter.stores.name"];
+          email?: parameters["rowFilter.stores.email"];
+          dismissed?: parameters["rowFilter.stores.dismissed"];
+          shown_shop?: parameters["rowFilter.stores.shown_shop"];
+          shown_email?: parameters["rowFilter.stores.shown_email"];
+          shown_name?: parameters["rowFilter.stores.shown_name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["stores"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
         };
       };
-      post: {
-        parameters: {
-          body: {
-            /** stores */
-            stores?: definitions["stores"];
-          };
-          query: {
-            /** Filtering Columns */
-            select?: parameters["select"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["stores"][];
         };
-        responses: {
-          /** Created */
-          201: unknown;
-        };
-      };
-      delete: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.stores.shop"];
-            name?: parameters["rowFilter.stores.name"];
-            email?: parameters["rowFilter.stores.email"];
-            dismissed?: parameters["rowFilter.stores.dismissed"];
-            shown_shop?: parameters["rowFilter.stores.shown_shop"];
-            shown_email?: parameters["rowFilter.stores.shown_email"];
-            shown_name?: parameters["rowFilter.stores.shown_name"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
-      };
-      patch: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.stores.shop"];
-            name?: parameters["rowFilter.stores.name"];
-            email?: parameters["rowFilter.stores.email"];
-            dismissed?: parameters["rowFilter.stores.dismissed"];
-            shown_shop?: parameters["rowFilter.stores.shown_shop"];
-            shown_email?: parameters["rowFilter.stores.shown_email"];
-            shown_name?: parameters["rowFilter.stores.shown_name"];
-          };
-          body: {
-            /** stores */
-            stores?: definitions["stores"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
+        /** Partial Content */
+        206: unknown;
       };
     };
-    "/reviews": {
-      get: {
-        parameters: {
-          query: {
-            created_at?: parameters["rowFilter.reviews.created_at"];
-            name?: parameters["rowFilter.reviews.name"];
-            description?: parameters["rowFilter.reviews.description"];
-            score?: parameters["rowFilter.reviews.score"];
-            order_id?: parameters["rowFilter.reviews.order_id"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+    post: {
+      parameters: {
+        body: {
+          /** stores */
+          stores?: definitions["stores"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["reviews"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
         };
       };
-      post: {
-        parameters: {
-          body: {
-            /** reviews */
-            reviews?: definitions["reviews"];
-          };
-          query: {
-            /** Filtering Columns */
-            select?: parameters["select"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** Created */
-          201: unknown;
-        };
-      };
-      delete: {
-        parameters: {
-          query: {
-            created_at?: parameters["rowFilter.reviews.created_at"];
-            name?: parameters["rowFilter.reviews.name"];
-            description?: parameters["rowFilter.reviews.description"];
-            score?: parameters["rowFilter.reviews.score"];
-            order_id?: parameters["rowFilter.reviews.order_id"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
-      };
-      patch: {
-        parameters: {
-          query: {
-            created_at?: parameters["rowFilter.reviews.created_at"];
-            name?: parameters["rowFilter.reviews.name"];
-            description?: parameters["rowFilter.reviews.description"];
-            score?: parameters["rowFilter.reviews.score"];
-            order_id?: parameters["rowFilter.reviews.order_id"];
-          };
-          body: {
-            /** reviews */
-            reviews?: definitions["reviews"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
+      responses: {
+        /** Created */
+        201: unknown;
       };
     };
-    "/orders": {
-      get: {
-        parameters: {
-          query: {
-            id?: parameters["rowFilter.orders.id"];
-            created_at?: parameters["rowFilter.orders.created_at"];
-            email?: parameters["rowFilter.orders.email"];
-            sent?: parameters["rowFilter.orders.sent"];
-            shop?: parameters["rowFilter.orders.shop"];
-            customer_locale?: parameters["rowFilter.orders.customer_locale"];
-            name?: parameters["rowFilter.orders.name"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+    delete: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.stores.shop"];
+          name?: parameters["rowFilter.stores.name"];
+          email?: parameters["rowFilter.stores.email"];
+          dismissed?: parameters["rowFilter.stores.dismissed"];
+          shown_shop?: parameters["rowFilter.stores.shown_shop"];
+          shown_email?: parameters["rowFilter.stores.shown_email"];
+          shown_name?: parameters["rowFilter.stores.shown_name"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["orders"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
         };
       };
-      post: {
-        parameters: {
-          body: {
-            /** orders */
-            orders?: definitions["orders"];
-          };
-          query: {
-            /** Filtering Columns */
-            select?: parameters["select"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** Created */
-          201: unknown;
-        };
-      };
-      delete: {
-        parameters: {
-          query: {
-            id?: parameters["rowFilter.orders.id"];
-            created_at?: parameters["rowFilter.orders.created_at"];
-            email?: parameters["rowFilter.orders.email"];
-            sent?: parameters["rowFilter.orders.sent"];
-            shop?: parameters["rowFilter.orders.shop"];
-            customer_locale?: parameters["rowFilter.orders.customer_locale"];
-            name?: parameters["rowFilter.orders.name"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
-      };
-      patch: {
-        parameters: {
-          query: {
-            id?: parameters["rowFilter.orders.id"];
-            created_at?: parameters["rowFilter.orders.created_at"];
-            email?: parameters["rowFilter.orders.email"];
-            sent?: parameters["rowFilter.orders.sent"];
-            shop?: parameters["rowFilter.orders.shop"];
-            customer_locale?: parameters["rowFilter.orders.customer_locale"];
-            name?: parameters["rowFilter.orders.name"];
-          };
-          body: {
-            /** orders */
-            orders?: definitions["orders"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
+      responses: {
+        /** No Content */
+        204: never;
       };
     };
-    "/shop_names": {
-      get: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.shop_names.shop"];
-            name?: parameters["rowFilter.shop_names.name"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+    patch: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.stores.shop"];
+          name?: parameters["rowFilter.stores.name"];
+          email?: parameters["rowFilter.stores.email"];
+          dismissed?: parameters["rowFilter.stores.dismissed"];
+          shown_shop?: parameters["rowFilter.stores.shown_shop"];
+          shown_email?: parameters["rowFilter.stores.shown_email"];
+          shown_name?: parameters["rowFilter.stores.shown_name"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["shop_names"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        body: {
+          /** stores */
+          stores?: definitions["stores"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
         };
       };
-      post: {
-        parameters: {
-          body: {
-            /** shop_names */
-            shop_names?: definitions["shop_names"];
-          };
-          query: {
-            /** Filtering Columns */
-            select?: parameters["select"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** Created */
-          201: unknown;
-        };
-      };
-      delete: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.shop_names.shop"];
-            name?: parameters["rowFilter.shop_names.name"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
-      };
-      patch: {
-        parameters: {
-          query: {
-            shop?: parameters["rowFilter.shop_names.shop"];
-            name?: parameters["rowFilter.shop_names.name"];
-          };
-          body: {
-            /** shop_names */
-            shop_names?: definitions["shop_names"];
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferReturn"];
-          };
-        };
-        responses: {
-          /** No Content */
-          204: never;
-        };
+      responses: {
+        /** No Content */
+        204: never;
       };
     };
-    "/user_reviews": {
-      get: {
-        parameters: {
-          query: {
-            name?: parameters["rowFilter.user_reviews.name"];
-            email?: parameters["rowFilter.user_reviews.email"];
-            shop?: parameters["rowFilter.user_reviews.shop"];
-            /** Filtering Columns */
-            select?: parameters["select"];
-            /** Ordering */
-            order?: parameters["order"];
-            /** Limiting and Pagination */
-            offset?: parameters["offset"];
-            /** Limiting and Pagination */
-            limit?: parameters["limit"];
-          };
-          header: {
-            /** Limiting and Pagination */
-            Range?: parameters["range"];
-            /** Limiting and Pagination */
-            "Range-Unit"?: parameters["rangeUnit"];
-            /** Preference */
-            Prefer?: parameters["preferCount"];
-          };
+  };
+  "/reviews": {
+    get: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.reviews.created_at"];
+          name?: parameters["rowFilter.reviews.name"];
+          description?: parameters["rowFilter.reviews.description"];
+          score?: parameters["rowFilter.reviews.score"];
+          order_id?: parameters["rowFilter.reviews.order_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
         };
-        responses: {
-          /** OK */
-          200: {
-            schema: definitions["user_reviews"][];
-          };
-          /** Partial Content */
-          206: unknown;
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
         };
       };
-    };
-    "/rpc/gdpr_change_name_in_reviews": {
-      post: {
-        parameters: {
-          body: {
-            args: {
-              /** Format: text */
-              email: string;
-              /** Format: text */
-              shop: string;
-            };
-          };
-          header: {
-            /** Preference */
-            Prefer?: parameters["preferParams"];
-          };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["reviews"][];
         };
-        responses: {
-          /** OK */
-          200: unknown;
-        };
+        /** Partial Content */
+        206: unknown;
       };
     };
-  }
-  
-  export interface definitions {
-    shop_reviews: {
-      /** Format: text */
-      name?: string;
-      /** Format: text */
-      description?: string;
-      /** Format: smallint */
-      score?: number;
-      /**
-       * Format: text
-       * @description Note:
-       * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
-       */
-      shop?: string;
-      /** Format: timestamp with time zone */
-      created_at?: string;
+    post: {
+      parameters: {
+        body: {
+          /** reviews */
+          reviews?: definitions["reviews"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
     };
-    stores: {
-      /**
-       * Format: text
-       * @description Note:
-       * This is a Primary Key.<pk/>
-       */
-      shop: string;
-      /** Format: text */
-      name?: string;
-      /** Format: text */
-      email?: string;
-      /**
-       * Format: boolean
-       * @default false
-       */
-      dismissed?: boolean;
-      /** Format: text */
-      shown_shop?: string;
-      /** Format: text */
-      shown_email?: string;
-      /** Format: text */
-      shown_name?: string;
+    delete: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.reviews.created_at"];
+          name?: parameters["rowFilter.reviews.name"];
+          description?: parameters["rowFilter.reviews.description"];
+          score?: parameters["rowFilter.reviews.score"];
+          order_id?: parameters["rowFilter.reviews.order_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
     };
-    reviews: {
-      /**
-       * Format: timestamp with time zone
-       * @default now()
-       */
-      created_at: string;
-      /**
-       * Format: text
-       * @default Bob
-       */
-      name: string;
-      /** Format: text */
-      description: string;
-      /** Format: smallint */
-      score: number;
-      /**
-       * Format: uuid
-       * @description Note:
-       * This is a Primary Key.<pk/>
-       * This is a Foreign Key to `orders.id`.<fk table='orders' column='id'/>
-       */
-      order_id: string;
+    patch: {
+      parameters: {
+        query: {
+          created_at?: parameters["rowFilter.reviews.created_at"];
+          name?: parameters["rowFilter.reviews.name"];
+          description?: parameters["rowFilter.reviews.description"];
+          score?: parameters["rowFilter.reviews.score"];
+          order_id?: parameters["rowFilter.reviews.order_id"];
+        };
+        body: {
+          /** reviews */
+          reviews?: definitions["reviews"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
     };
-    orders: {
-      /**
-       * Format: uuid
-       * @description Note:
-       * This is a Primary Key.<pk/>
-       * @default extensions.uuid_generate_v4()
-       */
-      id: string;
-      /**
-       * Format: timestamp with time zone
-       * @default now()
-       */
-      created_at: string;
-      /** Format: text */
-      email: string;
-      /**
-       * Format: boolean
-       * @default false
-       */
-      sent: boolean;
-      /**
-       * Format: text
-       * @description Note:
-       * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
-       */
-      shop?: string;
-      /**
-       * Format: text
-       * @default en
-       */
-      customer_locale: string;
-      /**
-       * Format: text
-       * @default Bob
-       */
-      name: string;
+  };
+  "/orders": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.orders.id"];
+          created_at?: parameters["rowFilter.orders.created_at"];
+          email?: parameters["rowFilter.orders.email"];
+          sent?: parameters["rowFilter.orders.sent"];
+          shop?: parameters["rowFilter.orders.shop"];
+          customer_locale?: parameters["rowFilter.orders.customer_locale"];
+          name?: parameters["rowFilter.orders.name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["orders"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
     };
-    shop_names: {
-      /**
-       * Format: text
-       * @description Note:
-       * This is a Primary Key.<pk/>
-       */
-      shop?: string;
-      /** Format: text */
-      name?: string;
+    post: {
+      parameters: {
+        body: {
+          /** orders */
+          orders?: definitions["orders"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
     };
-    user_reviews: {
-      /** Format: text */
-      name?: string;
-      /** Format: text */
-      email?: string;
-      /**
-       * Format: text
-       * @description Note:
-       * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
-       */
-      shop?: string;
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.orders.id"];
+          created_at?: parameters["rowFilter.orders.created_at"];
+          email?: parameters["rowFilter.orders.email"];
+          sent?: parameters["rowFilter.orders.sent"];
+          shop?: parameters["rowFilter.orders.shop"];
+          customer_locale?: parameters["rowFilter.orders.customer_locale"];
+          name?: parameters["rowFilter.orders.name"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
     };
-  }
-  
-  export interface parameters {
-    /**
-     * @description Preference
-     * @enum {string}
-     */
-    preferParams: "params=single-object";
-    /**
-     * @description Preference
-     * @enum {string}
-     */
-    preferReturn: "return=representation" | "return=minimal" | "return=none";
-    /**
-     * @description Preference
-     * @enum {string}
-     */
-    preferCount: "count=none";
-    /** @description Filtering Columns */
-    select: string;
-    /** @description On Conflict */
-    on_conflict: string;
-    /** @description Ordering */
-    order: string;
-    /** @description Limiting and Pagination */
-    range: string;
-    /**
-     * @description Limiting and Pagination
-     * @default items
-     */
-    rangeUnit: string;
-    /** @description Limiting and Pagination */
-    offset: string;
-    /** @description Limiting and Pagination */
-    limit: string;
-    /** @description shop_reviews */
-    "body.shop_reviews": definitions["shop_reviews"];
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.orders.id"];
+          created_at?: parameters["rowFilter.orders.created_at"];
+          email?: parameters["rowFilter.orders.email"];
+          sent?: parameters["rowFilter.orders.sent"];
+          shop?: parameters["rowFilter.orders.shop"];
+          customer_locale?: parameters["rowFilter.orders.customer_locale"];
+          name?: parameters["rowFilter.orders.name"];
+        };
+        body: {
+          /** orders */
+          orders?: definitions["orders"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/shop_names": {
+    get: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.shop_names.shop"];
+          name?: parameters["rowFilter.shop_names.name"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["shop_names"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** shop_names */
+          shop_names?: definitions["shop_names"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.shop_names.shop"];
+          name?: parameters["rowFilter.shop_names.name"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          shop?: parameters["rowFilter.shop_names.shop"];
+          name?: parameters["rowFilter.shop_names.name"];
+        };
+        body: {
+          /** shop_names */
+          shop_names?: definitions["shop_names"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/user_reviews": {
+    get: {
+      parameters: {
+        query: {
+          name?: parameters["rowFilter.user_reviews.name"];
+          email?: parameters["rowFilter.user_reviews.email"];
+          shop?: parameters["rowFilter.user_reviews.shop"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["user_reviews"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+  };
+  "/rpc/gdpr_change_name_in_reviews": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            email: string;
+            /** Format: text */
+            shop: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+}
+
+export interface definitions {
+  shop_reviews: {
     /** Format: text */
-    "rowFilter.shop_reviews.name": string;
+    name?: string;
     /** Format: text */
-    "rowFilter.shop_reviews.description": string;
+    description?: string;
     /** Format: smallint */
-    "rowFilter.shop_reviews.score": string;
-    /** Format: text */
-    "rowFilter.shop_reviews.shop": string;
+    score?: number;
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
+     */
+    shop?: string;
     /** Format: timestamp with time zone */
-    "rowFilter.shop_reviews.created_at": string;
-    /** @description stores */
-    "body.stores": definitions["stores"];
+    created_at?: string;
+  };
+  stores: {
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    shop: string;
     /** Format: text */
-    "rowFilter.stores.shop": string;
+    name?: string;
     /** Format: text */
-    "rowFilter.stores.name": string;
+    email?: string;
+    /**
+     * Format: boolean
+     * @default false
+     */
+    dismissed?: boolean;
     /** Format: text */
-    "rowFilter.stores.email": string;
-    /** Format: boolean */
-    "rowFilter.stores.dismissed": string;
+    shown_shop?: string;
     /** Format: text */
-    "rowFilter.stores.shown_shop": string;
+    shown_email?: string;
     /** Format: text */
-    "rowFilter.stores.shown_email": string;
+    shown_name?: string;
+  };
+  reviews: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at: string;
+    /**
+     * Format: text
+     * @default Bob
+     */
+    name: string;
     /** Format: text */
-    "rowFilter.stores.shown_name": string;
-    /** @description reviews */
-    "body.reviews": definitions["reviews"];
-    /** Format: timestamp with time zone */
-    "rowFilter.reviews.created_at": string;
-    /** Format: text */
-    "rowFilter.reviews.name": string;
-    /** Format: text */
-    "rowFilter.reviews.description": string;
+    description: string;
     /** Format: smallint */
-    "rowFilter.reviews.score": string;
-    /** Format: uuid */
-    "rowFilter.reviews.order_id": string;
-    /** @description orders */
-    "body.orders": definitions["orders"];
-    /** Format: uuid */
-    "rowFilter.orders.id": string;
-    /** Format: timestamp with time zone */
-    "rowFilter.orders.created_at": string;
+    score: number;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `orders.id`.<fk table='orders' column='id'/>
+     */
+    order_id: string;
+  };
+  orders: {
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * @default extensions.uuid_generate_v4()
+     */
+    id: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at: string;
     /** Format: text */
-    "rowFilter.orders.email": string;
-    /** Format: boolean */
-    "rowFilter.orders.sent": string;
+    email: string;
+    /**
+     * Format: boolean
+     * @default false
+     */
+    sent: boolean;
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
+     */
+    shop?: string;
+    /**
+     * Format: text
+     * @default en
+     */
+    customer_locale: string;
+    /**
+     * Format: text
+     * @default Bob
+     */
+    name: string;
+  };
+  shop_names: {
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    shop?: string;
     /** Format: text */
-    "rowFilter.orders.shop": string;
+    name?: string;
+  };
+  user_reviews: {
     /** Format: text */
-    "rowFilter.orders.customer_locale": string;
+    name?: string;
     /** Format: text */
-    "rowFilter.orders.name": string;
-    /** @description shop_names */
-    "body.shop_names": definitions["shop_names"];
-    /** Format: text */
-    "rowFilter.shop_names.shop": string;
-    /** Format: text */
-    "rowFilter.shop_names.name": string;
-    /** @description user_reviews */
-    "body.user_reviews": definitions["user_reviews"];
-    /** Format: text */
-    "rowFilter.user_reviews.name": string;
-    /** Format: text */
-    "rowFilter.user_reviews.email": string;
-    /** Format: text */
-    "rowFilter.user_reviews.shop": string;
-  }
-  
-  export interface operations {}
-  
-  export interface external {}
-  
+    email?: string;
+    /**
+     * Format: text
+     * @description Note:
+     * This is a Foreign Key to `shop_names.shop`.<fk table='shop_names' column='shop'/>
+     */
+    shop?: string;
+  };
+}
+
+export interface parameters {
+  /**
+   * @description Preference
+   * @enum {string}
+   */
+  preferParams: "params=single-object";
+  /**
+   * @description Preference
+   * @enum {string}
+   */
+  preferReturn: "return=representation" | "return=minimal" | "return=none";
+  /**
+   * @description Preference
+   * @enum {string}
+   */
+  preferCount: "count=none";
+  /** @description Filtering Columns */
+  select: string;
+  /** @description On Conflict */
+  on_conflict: string;
+  /** @description Ordering */
+  order: string;
+  /** @description Limiting and Pagination */
+  range: string;
+  /**
+   * @description Limiting and Pagination
+   * @default items
+   */
+  rangeUnit: string;
+  /** @description Limiting and Pagination */
+  offset: string;
+  /** @description Limiting and Pagination */
+  limit: string;
+  /** @description shop_reviews */
+  "body.shop_reviews": definitions["shop_reviews"];
+  /** Format: text */
+  "rowFilter.shop_reviews.name": string;
+  /** Format: text */
+  "rowFilter.shop_reviews.description": string;
+  /** Format: smallint */
+  "rowFilter.shop_reviews.score": string;
+  /** Format: text */
+  "rowFilter.shop_reviews.shop": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.shop_reviews.created_at": string;
+  /** @description stores */
+  "body.stores": definitions["stores"];
+  /** Format: text */
+  "rowFilter.stores.shop": string;
+  /** Format: text */
+  "rowFilter.stores.name": string;
+  /** Format: text */
+  "rowFilter.stores.email": string;
+  /** Format: boolean */
+  "rowFilter.stores.dismissed": string;
+  /** Format: text */
+  "rowFilter.stores.shown_shop": string;
+  /** Format: text */
+  "rowFilter.stores.shown_email": string;
+  /** Format: text */
+  "rowFilter.stores.shown_name": string;
+  /** @description reviews */
+  "body.reviews": definitions["reviews"];
+  /** Format: timestamp with time zone */
+  "rowFilter.reviews.created_at": string;
+  /** Format: text */
+  "rowFilter.reviews.name": string;
+  /** Format: text */
+  "rowFilter.reviews.description": string;
+  /** Format: smallint */
+  "rowFilter.reviews.score": string;
+  /** Format: uuid */
+  "rowFilter.reviews.order_id": string;
+  /** @description orders */
+  "body.orders": definitions["orders"];
+  /** Format: uuid */
+  "rowFilter.orders.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.orders.created_at": string;
+  /** Format: text */
+  "rowFilter.orders.email": string;
+  /** Format: boolean */
+  "rowFilter.orders.sent": string;
+  /** Format: text */
+  "rowFilter.orders.shop": string;
+  /** Format: text */
+  "rowFilter.orders.customer_locale": string;
+  /** Format: text */
+  "rowFilter.orders.name": string;
+  /** @description shop_names */
+  "body.shop_names": definitions["shop_names"];
+  /** Format: text */
+  "rowFilter.shop_names.shop": string;
+  /** Format: text */
+  "rowFilter.shop_names.name": string;
+  /** @description user_reviews */
+  "body.user_reviews": definitions["user_reviews"];
+  /** Format: text */
+  "rowFilter.user_reviews.name": string;
+  /** Format: text */
+  "rowFilter.user_reviews.email": string;
+  /** Format: text */
+  "rowFilter.user_reviews.shop": string;
+}
+
+export interface operations {}
+
+export interface external {}

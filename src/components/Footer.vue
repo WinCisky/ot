@@ -1,4 +1,10 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n({
+    useScope: 'global'
+})
+</script>
         
 <template>
 
@@ -6,7 +12,7 @@
 
         <div class="year">© {{ new Date().getFullYear() }}</div>
 
-        <a class="privacy" href="#">Privacy Policy</a>
+        <RouterLink to="/privacy" class="privacy">{{ t('Privacy Policy') }}</RouterLink>
 
     </div>
 
@@ -22,16 +28,15 @@
     gap: 20px;
 }
 
-.privacy{
+.privacy {
     text-decoration: none;
     color: #fff;
 }
 
 @media (prefers-color-scheme: light) {
-    .privacy{
+    .privacy {
         color: #000;
     }
 }
-
 </style>
         

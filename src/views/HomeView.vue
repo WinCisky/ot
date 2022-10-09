@@ -4,6 +4,10 @@ import SearchBar from '../components/SearchBar.vue';
 import PlatformsShowcase from '../components/PlatformsShowcase.vue';
 import Footer from '../components/Footer.vue';
 import Ot from '../components/icons/Ot.vue';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n({
+  useScope: 'global'
+})
 </script>
       
 <template>
@@ -13,8 +17,8 @@ import Ot from '../components/icons/Ot.vue';
     </router-link>
   </div>
   <SearchBar msg="Opentrust" />
-  <ReviewShowcase msg="Beautiful Reviews" />
-  <PlatformsShowcase msg="Get it on" />
+  <ReviewShowcase :msg="t('Beautiful Reviews')" />
+  <PlatformsShowcase :msg="t('Get it on')" />
   <Footer></Footer>
 </template>
       

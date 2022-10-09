@@ -6,6 +6,10 @@ defineProps({
     msg: String
 })
 
+const { t } = useI18n({
+    useScope: 'global'
+})
+
 const count = ref(0)
 </script>
     
@@ -29,7 +33,7 @@ const count = ref(0)
             </div>
         </div>
         <p>
-            Search a store and look at the reviews
+            {{ t('Search a store and look at the reviews') }}
         </p>
     </div>
 </template>
@@ -38,6 +42,7 @@ const count = ref(0)
 <script lang="ts">
 import { supabase } from '../supabase'
 import type { definitions } from '../supabase_types';
+import { useI18n } from 'vue-i18n';
 
 export default {
     data() {
@@ -203,18 +208,18 @@ export default {
         background-color: #fff;
     }
 
-    .search__results.open{
+    .search__results.open {
         background-color: #fff;
         border-bottom: 1px solid #bdbdbd;
         border-left: 1px solid #bdbdbd;
         border-right: 1px solid #bdbdbd;
     }
 
-    .search__results.open:before{
+    .search__results.open:before {
         background-color: #f5f5f5;
     }
 
-    .result:hover{
+    .result:hover {
         background-color: #EEEEEE;
     }
 }
