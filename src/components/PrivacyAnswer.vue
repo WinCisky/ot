@@ -7,7 +7,7 @@ defineProps({
             
 <template>
 
-    <div class="privacy-answer">
+    <div class="privacy-answer" :class="align">
         {{ msg }}
     </div>
 
@@ -21,6 +21,13 @@ defineProps({
     font-size: 24px;
     line-height: 26px;
     font-weight: 400;
-    text-align: align;
+}
+
+.privacy-answer.left{
+    text-align: left;
+}
+
+.privacy-answer.right{
+    text-align: right;
 }
 </style>
