@@ -21,10 +21,7 @@ const count = ref(0)
             <div class="search__bar" :class="{ open: searched }">
                 <input type="text" class="search__input" id="search__bar__input" ref="search"
                     :class="{ open: searched }">
-                <div class="search__btn" :class="{ open: searched }">
-                    <!-- <img src="../assets/search.svg" class="search__icon" alt="Search" /> -->
-                    <Search class="search__icon" />
-                </div>
+                
             </div>
             <div class="search__results" id="search__results" :class="{ open: searched }">
                 <div class="result" v-for="item in results" :key="item.name" @click="openSearchResult(item.shop)">
@@ -99,17 +96,22 @@ export default {
 .search__input {
     padding: 8px 16px;
     height: 30px;
-    width: 250px;
+    width: 296px;
     border: 1px solid var(--border);
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
     border-right: 2px;
     background-color: #3b3b3b;
     position: relative;
     font-size: 16px;
+    background-image: url("/search_dark.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 20px;
+  background-origin: content-box;
 }
 
 .search__input.open {
-    border-radius: 15px 0 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .search__container {
@@ -197,15 +199,10 @@ export default {
         background-color: #fff;
     }
 
-    .search__icon {
-        stroke: #bdbdbd;
-    }
-
     .search__input {
-        border-left: 1px solid #bdbdbd;
-        border-top: 1px solid #bdbdbd;
-        border-bottom: 1px solid #bdbdbd;
+        border: 1px solid #bdbdbd;
         background-color: #fff;
+        background-image: url("/search_light.svg");
     }
 
     .search__results.open {

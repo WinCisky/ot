@@ -16,7 +16,7 @@ const { t } = useI18n({
         </router-link>
     </div>
     <div class="container">
-        <h1>{{ t('Privacy policy') }}</h1>
+        <h1>{{ t('Privacy Policy') }}</h1>
         <PrivacyQuestion :msg="t('What information do we collect through Shopify’s APIs?')" align="left"
             class="divider" />
         <PrivacyAnswer :msg="t('Merchants\' customers name, surname and email (when they complete an order).')"
@@ -54,7 +54,7 @@ const { t } = useI18n({
         <PrivacyAnswer :msg="t('All of our data is stored and processed in Europe.')" align="right" />
         <PrivacyQuestion :msg="t('How can merchants contact you if they have additional questions?')" align="left"
             class="divider" />
-        <PrivacyAnswer :msg="t('Use the following email: info\@opentrust.it.')" align="left" />
+        <PrivacyAnswer :msg="t('Use the following email: info@opentrust.it.')" align="left" />
 
     </div>
 </template>

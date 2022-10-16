@@ -9,6 +9,8 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@splidejs/vue-splide": "^0.6.12",
     "@supabase/supabase-js": "^1.35.7",
     "vue": "^3.2.38",
     "vue-i18n": "^9.3.0-beta.6",
