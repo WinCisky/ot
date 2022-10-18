@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import '@splidejs/vue-splide/css';
 import Ot from '../components/icons/Ot.vue';
+import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
 
 const splide_options : Options = {
   rewind: true, 
@@ -51,29 +52,12 @@ const splide_options : Options = {
       </div>
     </SplideSlide>
   </Splide>
-  <!-- <Splide :options="{ rewind: true }" aria-label="latest ten reviews" v-if="reviews_second_row.length > 0">
-    <SplideSlide v-for="review in reviews_second_row" :key="review.created_at">
-      <img src="http://placekitten.com/g/500/500" alt="Sample 1">
-      {{ review.name }}
-      {{ review.description }}
-      {{ review.score }}
-    </SplideSlide>
-  </Splide>
-  <Splide :options="{ rewind: true }" aria-label="latest ten reviews" v-if="reviews_third_row.length > 0">
-    <SplideSlide v-for="review in reviews_third_row" :key="review.created_at">
-      <img src="http://placekitten.com/g/500/500" alt="Sample 1">
-      {{ review.name }}
-      {{ review.description }}
-      {{ review.score }}
-    </SplideSlide>
-  </Splide> -->
 </template>
       
       
 <script lang="ts">
 import { supabase } from '../supabase'
 import type { definitions } from '../supabase_types';
-import { Splide, SplideSlide, type Options } from '@splidejs/vue-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 export default {
