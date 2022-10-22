@@ -164,19 +164,17 @@ export default {
 };
 </script>
       
-<style scoped>
+<style scoped lang="scss">
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #424242aa);
-}
-
-.logo.opentrust {
-  fill: #fff;
+  &:hover {
+    filter: drop-shadow(0 0 2em #424242aa);
+  }
+  &.opentrust {
+    fill: #fff;
+  }
 }
 
 .review {
@@ -188,60 +186,58 @@ export default {
   cursor: pointer;
   min-height: 200px;
   min-width: 300px;
-}
 
-.content {
-  flex: 1;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  display: block;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 8;
-  text-align: left;
-}
+  .content {
+    flex: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 8;
+    text-align: left;
+  }
 
-.name {
-  display: flex;
-  /* justify-content: flex-end; */
-  font-weight: 500;
-}
+  .name {
+    display: flex;
+    /* justify-content: flex-end; */
+    font-weight: 500;
+  }
 
-.time {
-  font-size: small;
-  text-align: left;
-}
+  .time {
+    font-size: small;
+    text-align: left;
+  }
 
-.stars {
-  font-size: large;
-  color: #f5f5f522;
-  text-align: left;
-}
-
-.stars .active{
-  color: #f5f5f5;
+  .stars {
+    font-size: large;
+    color: #f5f5f522;
+    text-align: left;
+    .active{
+      color: #f5f5f5;
+    }
+  }
 }
 
 @media (prefers-color-scheme: light) {
-  .logo.opentrust {
-    fill: #2563EB;
-  }
-
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #E0E0E0aa);
+  .logo{
+    &.opentrust {
+      fill: #2563EB;
+    }
+    &:hover {
+      filter: drop-shadow(0 0 2em #E0E0E0aa);
+    }
   }
 
   .review{
     border-color: orange;
-  }
-
-  .stars {
-    color: #f5f5f5;
-  }
-
-  .stars .active {
-    color: orange;
+    .stars {
+      color: #f5f5f5;
+      .active {
+        color: orange;
+      }
+    }
   }
 }
 

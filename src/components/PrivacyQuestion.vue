@@ -14,19 +14,17 @@ defineProps({
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .privacy-question {
     margin-bottom: 20px;
     font-size: 28px;
     line-height: 30px;
     font-weight: 600;
-}
-
-.privacy-question.left{
-    text-align: left;
-}
-
-.privacy-question.right{
-    text-align: right;
+    &.left{
+        text-align: left;
+    }
+    &.right{
+        text-align: right;
+    }
 }
 </style>

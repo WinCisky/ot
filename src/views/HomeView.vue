@@ -17,33 +17,35 @@ const { t } = useI18n({
     </router-link>
   </div>
   <SearchBar msg="Opentrust" />
+  <router-link to="/review/gavilani-dev.myshopify.com">
+      {{ t('Leave a review') }}
+    </router-link>
   <ReviewShowcase :msg="t('Beautiful Reviews')" />
   <PlatformsShowcase :msg="t('Get it on')" />
   <Footer></Footer>
 </template>
       
-<style scoped>
+<style scoped lang="scss">
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #424242aa);
-}
-
-.logo.opentrust {
-  fill: #fff;
+  &:hover{
+    filter: drop-shadow(0 0 2em #424242aa);
+  }
+  &.opentrust {
+    fill: #fff;
+  }
 }
 
 @media (prefers-color-scheme: light) {
-  .logo.opentrust {
-    fill: #2563EB;
-  }
-
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #E0E0E0aa);
+  .logo{
+    &.opentrust {
+      fill: #2563EB;
+    }
+    &:hover {
+      filter: drop-shadow(0 0 2em #E0E0E0aa);
+    }
   }
 }
 </style>

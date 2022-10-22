@@ -19,23 +19,19 @@ const { t } = useI18n({
 
 </template>
     
-<style scoped>
+<style scoped lang="scss">
 .section {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20vh;
     gap: 20px;
-}
-
-.privacy {
-    text-decoration: none;
-    color: #fff;
-}
-
-@media (prefers-color-scheme: light) {
     .privacy {
-        color: #000;
+        text-decoration: none;
+        color: #fff;
+        @media (prefers-color-scheme: light) {
+            color: #000;
+        }
     }
 }
 </style>

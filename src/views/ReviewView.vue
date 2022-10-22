@@ -6,8 +6,22 @@ const { t } = useI18n({
 </script>
       
 <template>
+  <div class="card">
+    <div class="greetings_text">
+      <p>Hello,</p>
+      <p>write about your shopping experience on {{  }}</p>
+    </div>
+    <div class="">
+      <textarea id="description" required placeholder="Description"></textarea>
+    </div>
+  </div>
 </template>
       
-<style scoped>
+<style scoped lang="scss">
+.card{
+  .greetings_text{
+    background-color: red;
+  }
+}
 </style>
       

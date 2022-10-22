@@ -59,36 +59,36 @@ const { t } = useI18n({
     </div>
 </template>
       
-<style scoped>
+<style scoped lang="scss">
 .container {
     max-width: 800px;
-}
-
-.divider {
-    margin-top: 100px;
+    .divider {
+        margin-top: 100px;
+    }
 }
 
 .logo {
     height: 6em;
     padding: 1.5em;
     will-change: filter;
-}
 
-.logo:hover {
-    filter: drop-shadow(0 0 2em #424242aa);
-}
+    &:hover {
+        filter: drop-shadow(0 0 2em #424242aa);
+    }
 
-.logo.opentrust {
-    fill: #fff;
+    &.opentrust {
+        fill: #fff;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-    .logo.opentrust {
-        fill: #2563EB;
-    }
-
-    .logo:hover {
-        filter: drop-shadow(0 0 2em #E0E0E0aa);
+    .logo{
+        &.opentrust {
+            fill: #2563EB;
+        }
+        &:hover{
+            filter: drop-shadow(0 0 2em #E0E0E0aa);
+        }
     }
 }
 </style>

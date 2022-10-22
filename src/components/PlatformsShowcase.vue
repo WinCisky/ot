@@ -28,7 +28,7 @@ defineProps({
 <script>
 </script>
         
-<style scoped>
+<style scoped lang="scss">
 .section {
     display: flex;
     justify-content: center;
@@ -37,29 +37,28 @@ defineProps({
     margin-bottom: 20vh;
     flex-direction: column;
     gap: 40px;
-}
-
-.logo {
-    height: 6em;
-    width: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #212121;
-}
-
-.logo.shopify {
-    fill: #fff;
+    .logo {
+        height: 6em;
+        width: 6em;
+        padding: 1.5em;
+        will-change: filter;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #212121;
+        &.shopify {
+            fill: #fff;
+        }
+    }
 }
 
 @media (prefers-color-scheme: light) {
-    .logo {
-        background-color: #eee;
-    }
-
-    .logo.shopify {
-        fill: #424242;
+    .section{
+        .logo {
+            background-color: #eee;
+            &.shopify {
+                fill: #424242;
+            }
+        }
     }
 }
 </style>
