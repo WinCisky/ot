@@ -75,6 +75,12 @@
     padding: 2rem;
     text-align: center;
   }
+
+  @media screen and (max-width:767px) {
+    #app{
+      padding: 0;
+    }
+  }
   
   @media (prefers-color-scheme: light) {
     :root {

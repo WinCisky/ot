@@ -95,6 +95,9 @@ export default {
         padding: 8px 16px;
         height: 30px;
         width: 296px;
+        max-width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
         border: 1px solid var(--border);
         border-radius: 15px;
         border-right: 2px;
