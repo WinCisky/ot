@@ -186,6 +186,7 @@ export default {
   cursor: pointer;
   min-height: 200px;
   min-width: 300px;
+  font-family: Roboto;
 
   .content {
     flex: 1;

@@ -29,7 +29,7 @@ const count = ref(0)
                 </div>
             </div>
         </div>
-        <p>
+        <p class="text__description">
             {{ t('Search a store and look at the reviews') }}
         </p>
     </div>
@@ -109,6 +109,7 @@ export default {
         background-repeat: no-repeat;
         background-size: 20px;
         background-origin: content-box;
+        font-family: Roboto;
 
         &.open {
             border-radius: 15px 15px 0 0;
@@ -181,12 +182,17 @@ export default {
     padding-right: 16px;
     align-items: center;
     cursor: pointer;
+    font-family: Roboto;
     &:hover {
         background: #616161;
         &:last-child {
             border-radius: 0 0 15px 15px;
         }
     }
+}
+
+.text__description{
+    font-family: Roboto;
 }
 
 @media (prefers-color-scheme: light) {

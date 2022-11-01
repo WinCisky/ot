@@ -26,6 +26,7 @@ const { t } = useI18n({
     align-items: center;
     margin-top: 20vh;
     gap: 20px;
+        font-family: Roboto;
     .privacy {
         text-decoration: none;
         color: #fff;
