@@ -89,7 +89,12 @@ export default {
 
 <style lang="scss">
 body {
-  background-color: rgb(249, 250, 251);
+  background-color: #212121;
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: rgb(249, 250, 251);
+  }
 }
 </style>
       
@@ -97,7 +102,7 @@ body {
 .card {
   width: min(calc(100% - 60px), 350px);
   margin: auto;
-  background-color: #fff;
+  background-color: #424242;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -172,15 +177,15 @@ body {
       &>.button {
         // background-color: #2563EB;
         background-color: transparent;
-        border: 2px solid #2563EB;
+        border: 2px solid #6D96EE;
         border-radius: 4px;
         padding: 6px 20px;
-        color: #2563EB;
+        color: #6D96EE;
         cursor: pointer;
         font-weight: 600;
 
         background: {
-          image: linear-gradient(45deg, #2563EB 50%, transparent 50%);
+          image: linear-gradient(45deg, #6D96EE 50%, transparent 50%);
           position: 100%;
           size: 400%;
         }
@@ -190,6 +195,23 @@ body {
         &:hover {
           background-position: 0;
           color: #fff;
+        }
+      }
+    }
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  .card{
+    background-color: #fff;
+
+    .input__submit{
+      &>.button {
+        border: 2px solid #2563EB;
+        color: #2563EB;
+        background: {
+          image: linear-gradient(45deg, #2563EB 50%, transparent 50%);
         }
       }
     }
