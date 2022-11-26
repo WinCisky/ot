@@ -120,6 +120,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin-top: 20vh;
+
     @media only screen and (max-width: 767px) {
         flex-direction: column;
     }
@@ -164,11 +165,13 @@ body {
         height: 200px;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
+
         .side {
             position: absolute;
             width: 100%;
             height: 100%;
             opacity: 0.9;
+
             &.front {
                 background-color: #d50000;
                 -webkit-transform: translateZ(100px);
@@ -176,7 +179,7 @@ body {
             }
         }
 
-        .splide__slide{
+        .splide__slide {
             &.review {
                 border-radius: 0.5rem;
                 border: 2px solid;
@@ -190,6 +193,7 @@ body {
 
                 width: 300px;
                 height: 200px;
+
                 @media (prefers-color-scheme: light) {
                     background-color: #fff;
                 }

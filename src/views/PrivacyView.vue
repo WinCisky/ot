@@ -62,6 +62,7 @@ const { t } = useI18n({
 <style scoped lang="scss">
 .container {
     max-width: 800px;
+
     .divider {
         margin-top: 100px;
     }
@@ -82,11 +83,12 @@ const { t } = useI18n({
 }
 
 @media (prefers-color-scheme: light) {
-    .logo{
+    .logo {
         &.opentrust {
             fill: #2563EB;
         }
-        &:hover{
+
+        &:hover {
             filter: drop-shadow(0 0 2em #E0E0E0aa);
         }
     }

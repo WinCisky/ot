@@ -37,6 +37,7 @@ defineProps({
     margin-bottom: 20vh;
     flex-direction: column;
     gap: 40px;
+
     .logo {
         height: 6em;
         width: 6em;
@@ -45,6 +46,7 @@ defineProps({
         padding: 20px;
         border-radius: 15px;
         background-color: #212121;
+
         &.shopify {
             fill: #fff;
         }
@@ -52,9 +54,10 @@ defineProps({
 }
 
 @media (prefers-color-scheme: light) {
-    .section{
+    .section {
         .logo {
             background-color: #eee;
+
             &.shopify {
                 fill: #424242;
             }

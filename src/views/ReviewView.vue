@@ -19,7 +19,8 @@ const { t } = useI18n({
       </p>
     </div>
     <div class="input__description">
-      <textarea id="description" required placeholder="Description" v-on:input="auto_grow"></textarea>
+      <textarea id="description" v-model="description" required placeholder="Description"
+        v-on:input="auto_grow"></textarea>
     </div>
     <div class="text__requirement">
       <p>
@@ -27,14 +28,12 @@ const { t } = useI18n({
       </p>
     </div>
     <div class="input__stars">
-      <div class="input__stars__star active">★</div>
-      <div class="input__stars__star active">★</div>
-      <div class="input__stars__star active">★</div>
-      <div class="input__stars__star active">★</div>
-      <div class="input__stars__star">★</div>
+      <div v-for="n in 5" class="input__stars__star" :class="{ 'active': score >= n }" @click="changeScore(n)">
+        ★
+      </div>
     </div>
     <div class="input__submit">
-      <div class="button">
+      <div class="button" @click="submitReview">
         {{ t('Submit') }}
       </div>
     </div>
@@ -43,12 +42,14 @@ const { t } = useI18n({
 
 <script lang="ts">
 import { supabase } from '../supabase'
-import type { definitions } from '../supabase_types';
 
 export default {
   data() {
     return {
       shopName: "",
+      userName: "",
+      description: "",
+      score: 4,
       loaded: false,
     }
   },
@@ -57,30 +58,58 @@ export default {
   },
   methods: {
     async loadShopData() {
-      let shop = this.$route.params.shop;
-      if (shop) {
-
-        if (typeof shop === "string") {
-          const result = await supabase
-            .from<definitions['shop_names']>('shop_names')
-            .select()
-            .eq('shop', shop)
-
-          if (
-            result &&
-            result.data?.length &&
-            result.data?.length > 0 &&
-            result.data[0].name
-          )
-            this.shopName = result?.data[0].name;
+      let shop = "";
+      if (this.$route.params.shop)
+        shop = this.$route.params.shop.toString();
+      if (!shop && this.$route.query.shop) {
+        shop = this.$route.query.shop.toString();
+      }
+      if (shop && typeof (shop) === 'string') {
+        const result = await supabase
+          .from('shop_names')
+          .select()
+          .eq('shop', shop);
+        if (
+          result &&
+          result.data?.length &&
+          result.data?.length > 0 &&
+          result.data[0].name
+        ) {
+          this.shopName = result?.data[0].name;
         }
       }
     },
     auto_grow(event: Event) {
       let element = event.target as HTMLElement;
-      if(element){
+      if (element) {
         element.style.height = "5px";
-        element.style.height = (element.scrollHeight + 20)+"px";
+        element.style.height = (element.scrollHeight + 20) + "px";
+      }
+    },
+    changeScore(val: number) {
+      this.score = val;
+    },
+    async submitReview() {
+      let uuid = "";
+      if (this.$route.params.uuid)
+        uuid = this.$route.params.uuid.toString();
+      if (!uuid && this.$route.query.order)
+        uuid = this.$route.query.order.toString();
+      if (uuid && typeof (uuid) === "string") {
+        const REVIEW_URL = "https://review.deno.dev";
+        await fetch(REVIEW_URL + "/" + uuid, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            description: this.description,
+            score: this.score,
+            name: this.$route.query.name ? this.$route.query.name.toString() : "",
+          })
+        })
       }
     }
   }
@@ -91,6 +120,7 @@ export default {
 body {
   background-color: #212121;
 }
+
 @media (prefers-color-scheme: light) {
   body {
     background-color: rgb(249, 250, 251);
@@ -140,7 +170,7 @@ body {
         padding: 10px;
         resize: vertical;
 
-        &:focus{
+        &:focus {
           outline: 1px solid #2564eb22;
 
         }
@@ -156,7 +186,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 26px;
       gap: 5px;
 
       &__star {
@@ -203,13 +233,14 @@ body {
 
 
 @media (prefers-color-scheme: light) {
-  .card{
+  .card {
     background-color: #fff;
 
-    .input__submit{
+    .input__submit {
       &>.button {
         border: 2px solid #2563EB;
         color: #2563EB;
+
         background: {
           image: linear-gradient(45deg, #2563EB 50%, transparent 50%);
         }

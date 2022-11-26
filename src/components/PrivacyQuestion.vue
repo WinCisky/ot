@@ -20,10 +20,12 @@ defineProps({
     font-size: 28px;
     line-height: 30px;
     font-weight: 600;
-    &.left{
+
+    &.left {
         text-align: left;
     }
-    &.right{
+
+    &.right {
         text-align: right;
     }
 }

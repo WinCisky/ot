@@ -17,12 +17,12 @@ const { t } = useI18n({
     </router-link>
   </div>
   <SearchBar msg="Opentrust" />
-  <router-link to="/review/gavilani-dev.myshopify.com">
-      {{ t('Leave a review') }}
-    </router-link>
+  <router-link to="/review/?order=323c9af4-cf2b-4971-aa77-acfbdbf58365&name=Simonella&shop=gavilani-dev.myshopify.com">
+    {{ t('Leave a review') }}
+  </router-link>
   <ReviewShowcase :msg="t('Beautiful Reviews')" />
   <PlatformsShowcase :msg="t('Get it on')" />
-  <Footer></Footer>
+  <Footer />
 </template>
       
 <style scoped lang="scss">
@@ -30,19 +30,22 @@ const { t } = useI18n({
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  &:hover{
+
+  &:hover {
     filter: drop-shadow(0 0 2em #424242aa);
   }
+
   &.opentrust {
     fill: #fff;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  .logo{
+  .logo {
     &.opentrust {
       fill: #2563EB;
     }
+
     &:hover {
       filter: drop-shadow(0 0 2em #E0E0E0aa);
     }

@@ -21,7 +21,7 @@ const count = ref(0)
             <div class="search__bar" :class="{ open: searched }">
                 <input type="text" class="search__input" id="search__bar__input" ref="search"
                     :class="{ open: searched }">
-                
+
             </div>
             <div class="search__results" id="search__results" :class="{ open: searched }">
                 <div class="result" v-for="item in results" :key="item.name" @click="openSearchResult(item.shop)">
@@ -38,7 +38,6 @@ const count = ref(0)
     
 <script lang="ts">
 import { supabase } from '../supabase'
-import type { definitions } from '../supabase_types';
 import { useI18n } from 'vue-i18n';
 
 export default {
@@ -60,7 +59,7 @@ export default {
                     const search_val = inputElem.value;
                     // search on supabase
                     let result = await supabase
-                        .from<definitions["shop_names"]>('shop_names')
+                        .from('shop_names')
                         .select()
                         .textSearch('name', `${search_val}:*`);
                     if (!result.error && result.data.length > 0) {
@@ -91,6 +90,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
     .search__input {
         padding: 8px 16px;
         height: 30px;
@@ -114,6 +114,7 @@ export default {
         &.open {
             border-radius: 15px 15px 0 0;
         }
+
         &:focus {
             outline: none;
         }
@@ -137,6 +138,7 @@ export default {
     background-color: var(--border);
     cursor: pointer;
     background-color: #3b3b3b;
+
     &.open {
         border-radius: 0 15px 0 0;
     }
@@ -183,15 +185,17 @@ export default {
     align-items: center;
     cursor: pointer;
     font-family: Roboto;
+
     &:hover {
         background: #616161;
+
         &:last-child {
             border-radius: 0 0 15px 15px;
         }
     }
 }
 
-.text__description{
+.text__description {
     font-family: Roboto;
 }
 
@@ -202,7 +206,8 @@ export default {
         border-bottom: 1px solid #bdbdbd;
         background-color: #fff;
     }
-    .search__bar{
+
+    .search__bar {
         .search__input {
             border: 1px solid #bdbdbd;
             background-color: #fff;
@@ -210,16 +215,18 @@ export default {
         }
     }
 
-    .search__results{
+    .search__results {
         &.open {
             background-color: #fff;
             border-bottom: 1px solid #bdbdbd;
             border-left: 1px solid #bdbdbd;
             border-right: 1px solid #bdbdbd;
+
             &:before {
                 background-color: #f5f5f5;
             }
         }
+
         .result:hover {
             background-color: #EEEEEE;
         }

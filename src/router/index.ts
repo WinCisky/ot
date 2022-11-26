@@ -16,9 +16,19 @@ const router = createRouter({
       component: () => import("../views/ShopView.vue"),
     },
     {
-      path: "/review/:shop",
+      path: "/review/:shop/:uuid",
       name: "review",
       component: () => import("../views/ReviewView.vue"),
+    },
+    {
+      path: "/review",
+      name: "review_old",
+      component: () => import("../views/ReviewView.vue"),
+    },
+    {
+      path: "/thanks",
+      name: "thanks",
+      component: () => import("../views/ThankYouView.vue"),
     },
     {
       path: "/privacy",

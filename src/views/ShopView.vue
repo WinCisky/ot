@@ -3,18 +3,18 @@ import '@splidejs/vue-splide/css';
 import Ot from '../components/icons/Ot.vue';
 import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
 
-const splide_options : Options = {
-  rewind: true, 
+const splide_options: Options = {
+  rewind: true,
   // padding: 75, 
   // width: 800, 
   arrows: false,
   pagination: false,
-  gap: 20, 
+  gap: 20,
   perPage: 4,
   breakpoints: {
-		768: {
-			perPage: 2,
-		},
+    768: {
+      perPage: 2,
+    },
     1024: {
       perPage: 3
     }
@@ -34,10 +34,11 @@ const splide_options : Options = {
   </div>
 
   <h1>{{ name }}</h1>
-  <Splide :options="splide_options" :extensions="{ AutoScroll }" aria-label="latest five reviews" v-if="reviews_first_row.length > 0">
-    <SplideSlide v-for="review in reviews_first_row" :key="review.created_at" class="review">
+  <Splide :options="splide_options" :extensions="{ AutoScroll }" aria-label="latest five reviews"
+    v-if="reviews_first_row.length > 0">
+    <SplideSlide v-for="review in reviews_first_row" class="review">
       <div class="stars">
-        <span v-for="index in 5" :key="index" :class="{active: (review.score && review.score >= index)}">
+        <span v-for="index in 5" :key="index" :class="{ active: (review.score && review.score >= index) }">
           &#9733;
         </span>
       </div>
@@ -57,7 +58,7 @@ const splide_options : Options = {
       
 <script lang="ts">
 import { supabase } from '../supabase'
-import type { definitions } from '../supabase_types';
+import { Database } from '../types/supabase'
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 export default {
@@ -65,9 +66,9 @@ export default {
     return {
       name: "",
       loaded: false,
-      reviews_first_row: [] as definitions['shop_reviews'][],
-      reviews_second_row: [] as definitions['shop_reviews'][],
-      reviews_third_row: [] as definitions['shop_reviews'][],
+      reviews_first_row: [] as Database['public']['Views']['shop_reviews']['Row'][],
+      reviews_second_row: [] as Database['public']['Views']['shop_reviews']['Row'][],
+      reviews_third_row: [] as Database['public']['Views']['shop_reviews']['Row'][],
     }
   },
   mounted() {
@@ -80,7 +81,7 @@ export default {
 
       if (typeof shop === "string") {
         const result = await supabase
-          .from<definitions['shop_names']>('shop_names')
+          .from('shop_names')
           .select()
           .eq('shop', shop)
 
@@ -99,7 +100,7 @@ export default {
 
       if (typeof shop === "string") {
         const result = await supabase
-          .from<definitions['shop_reviews']>('shop_reviews')
+          .from('shop_reviews')
           .select()
           .eq('shop', shop)
           .range(0, 15)
@@ -169,9 +170,11 @@ export default {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
+
   &:hover {
     filter: drop-shadow(0 0 2em #424242aa);
   }
+
   &.opentrust {
     fill: #fff;
   }
@@ -215,31 +218,34 @@ export default {
     font-size: large;
     color: #f5f5f522;
     text-align: left;
-    .active{
+
+    .active {
       color: #f5f5f5;
     }
   }
 }
 
 @media (prefers-color-scheme: light) {
-  .logo{
+  .logo {
     &.opentrust {
       fill: #2563EB;
     }
+
     &:hover {
       filter: drop-shadow(0 0 2em #E0E0E0aa);
     }
   }
 
-  .review{
+  .review {
     border-color: orange;
+
     .stars {
       color: #f5f5f5;
+
       .active {
         color: orange;
       }
     }
   }
 }
-
 </style>

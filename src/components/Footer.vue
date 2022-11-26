@@ -26,10 +26,12 @@ const { t } = useI18n({
     align-items: center;
     margin-top: 20vh;
     gap: 20px;
-        font-family: Roboto;
+    font-family: Roboto;
+
     .privacy {
         text-decoration: none;
         color: #fff;
+
         @media (prefers-color-scheme: light) {
             color: #000;
         }
