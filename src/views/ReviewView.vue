@@ -19,7 +19,7 @@ const { t } = useI18n({
       </p>
     </div>
     <div class="input__description">
-      <textarea id="description" ref="description" required placeholder="Description"
+      <textarea id="description" required placeholder="Description"
         v-on:input="auto_grow"></textarea>
     </div>
     <div class="text__requirement">
@@ -95,7 +95,7 @@ export default {
         uuid = this.$route.params.uuid.toString();
       if (!uuid && this.$route.query.order)
         uuid = this.$route.query.order.toString();
-      let descr = this.$refs.description as HTMLInputElement;
+      let descr = (document.getElementById('descrizione') as HTMLInputElement).value;;
       if (uuid && typeof (uuid) === "string") {
         const REVIEW_URL = "https://review.deno.dev";
         await fetch(REVIEW_URL + "/" + uuid, {
