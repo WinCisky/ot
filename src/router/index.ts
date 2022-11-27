@@ -26,7 +26,7 @@ const router = createRouter({
       component: () => import("../views/ReviewView.vue"),
     },
     {
-      path: "/revie/it",
+      path: "/review/it",
       name: "review_old_it",
       component: () => import("../views/ReviewView.vue"),
     },
