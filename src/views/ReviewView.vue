@@ -95,7 +95,7 @@ export default {
         uuid = this.$route.params.uuid.toString();
       if (!uuid && this.$route.query.order)
         uuid = this.$route.query.order.toString();
-      let descr = (document.getElementById('descrizione') as HTMLInputElement).value;;
+      let descr = (document.getElementById('description') as HTMLInputElement).value;;
       if (uuid && typeof (uuid) === "string") {
         const REVIEW_URL = "https://review.deno.dev";
         await fetch(REVIEW_URL + "/" + uuid, {
