@@ -14,7 +14,6 @@ useMeta({
     lang: iso2lang
   },
   description: `${t('Read the reviews of other customers')}`,
-  viewport: 'width=device-width, initial-scale=1',
   meta: [
     { charset: 'utf-8' },
   ]
