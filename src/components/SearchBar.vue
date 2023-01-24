@@ -19,7 +19,7 @@ const count = ref(0)
     <div class="card">
         <div class="search__container">
             <div class="search__bar" :class="{ open: searched }">
-                <input type="text" role="search" class="search__input" id="search__bar__input" ref="search"
+                <input type="text" aria-label="search shop" role="search" class="search__input" id="search__bar__input" ref="search"
                     :class="{ open: searched }">
 
             </div>
