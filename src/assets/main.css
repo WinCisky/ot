@@ -1,11 +1,13 @@
 @font-face {
   font-family: "Montserrat";
   src: url('./Montserrat.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Roboto";
   src: url('./Roboto-Regular.ttf');
+  font-display: swap;
 }
 
 :root {
