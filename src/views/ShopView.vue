@@ -13,11 +13,7 @@ const { t } = useI18n({
 const shopName = useRoute().query?.name ?? "";
 useMeta({ 
   title: shopName,
-  meta: [
-    { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'description', content: `${t('Read')} ${shopName}${t('\'s customers opinion on Opentrust')}` }
-  ]
+  description: `${t('Read')} ${shopName}${t('\'s customers opinion on Opentrust')}`
 });
 
 const splide_options: Options = {

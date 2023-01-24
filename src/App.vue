@@ -13,10 +13,10 @@ useMeta({
   htmlAttrs: {
     lang: iso2lang
   },
+  description: `${t('Read the reviews of other customers')}`,
+  viewport: 'width=device-width, initial-scale=1',
   meta: [
     { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'description', content: `${t('Read the reviews of other customers')}` }
   ]
 })
 </script>
