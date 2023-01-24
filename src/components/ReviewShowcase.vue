@@ -24,7 +24,7 @@ const count = ref(0)
 
         <div class="container" id="container" ref="container" @mousemove="mouseMove">
             <div class="cube" id="cube" ref="cube">
-                <li class="splide__slide review side front" style="border-color: orange">
+                <div class="splide__slide review side front" style="border-color: orange">
                     <div class="stars">
                         <span class='active'>&#9733;</span>
                         <span class='active'>&#9733;</span>
@@ -41,7 +41,7 @@ const count = ref(0)
                     <div class="time">
                         {{ t('20 min ago') }}
                     </div>
-                </li>
+                </div>
             </div>
         </div>
 

@@ -1,7 +1,23 @@
 <script setup lang="ts">
 import '@splidejs/vue-splide/css';
 import Ot from '../components/icons/Ot.vue';
+import { useMeta } from 'vue-meta';
+import { useRoute } from 'vue-router'
 import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
+
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n({
+  useScope: 'global'
+})
+
+const shopName = useRoute().query?.name ?? "";
+useMeta({ 
+  title: shopName,
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'description', content: `${t('Read')} ${shopName}${t('\'s customers opinion on Opentrust')}` }
+  ]
+});
 
 const splide_options: Options = {
   rewind: true,

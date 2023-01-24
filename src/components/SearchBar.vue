@@ -24,7 +24,10 @@ const count = ref(0)
 
             </div>
             <div class="search__results" id="search__results" :class="{ open: searched }">
-                <div class="result" v-for="item in results" :key="item.name" @keyup.enter="openSearchResult(item.shop)" @click="openSearchResult(item.shop)" tabindex="0" role="link">
+                <div class="result" v-for="item in results" :key="item.name" tabindex="0" role="link"
+                    @keyup.enter="openSearchResult(item.shop, item.name)" 
+                    @click="openSearchResult(item.shop, item.name)"
+                >
                     {{ item.name }}
                 </div>
             </div>
@@ -76,10 +79,10 @@ export default {
                 }
             });
         },
-        openSearchResult(shop: string) {
+        openSearchResult(shop: string, name: string) {
             // window.location.href = `/shops?shop=${shop}`;
             const encodedShop = encodeURI(shop);
-            this.$router.push(`/shop/${encodedShop}`);
+            this.$router.push(`/shop/${encodedShop}?name=${name}`);
         }
     }
 }
