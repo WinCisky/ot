@@ -12,7 +12,7 @@ defineProps({
         <h2 class="section__title">{{ msg }}</h2>
 
         <div class="platforms">
-            <a href="https://apps.shopify.com/opentrust">
+            <a href="https://apps.shopify.com/opentrust" aria-label="Opentrust Shopify app">
                 <!-- <img src="../assets/shopify_glyph_white.svg" class="logo shopify" alt="Shopify logo" /> -->
                 <Shopify class="logo shopify" />
             </a>

@@ -19,12 +19,12 @@ const count = ref(0)
     <div class="card">
         <div class="search__container">
             <div class="search__bar" :class="{ open: searched }">
-                <input type="text" class="search__input" id="search__bar__input" ref="search"
+                <input type="text" role="search" class="search__input" id="search__bar__input" ref="search"
                     :class="{ open: searched }">
 
             </div>
             <div class="search__results" id="search__results" :class="{ open: searched }">
-                <div class="result" v-for="item in results" :key="item.name" @click="openSearchResult(item.shop)">
+                <div class="result" v-for="item in results" :key="item.name" @keyup.enter="openSearchResult(item.shop)" @click="openSearchResult(item.shop)" tabindex="0" role="link">
                     {{ item.name }}
                 </div>
             </div>

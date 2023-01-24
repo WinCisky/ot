@@ -12,7 +12,7 @@ const { t } = useI18n({
       
 <template>
   <div>
-    <router-link to="/">
+    <router-link to="/" role="link" aria-label="Opentrust home page">
       <Ot class="logo opentrust" />
     </router-link>
   </div>
