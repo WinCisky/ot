@@ -2,7 +2,10 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"],
   "compilerOptions": {
-    "composite": true,
-    "types": ["node"]
+  "composite": true,
+  // Deve consentire l'emit (noEmit:false) perché questo progetto è referenziato da tsconfig.json
+  // Il config base @vue imposta noEmit:true; lo sovrascriviamo per evitare TS6310
+  "noEmit": false,
+  "types": ["node"]
   }
 }
