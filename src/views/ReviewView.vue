@@ -42,6 +42,7 @@ const { t } = useI18n({
 
 <script lang="ts">
 import { supabase } from '../supabase'
+import type { Database } from '../types/supabase'
 
 export default {
   data() {
@@ -69,13 +70,10 @@ export default {
           .from('shop_names')
           .select()
           .eq('shop', shop);
-        if (
-          result &&
-          result.data?.length &&
-          result.data?.length > 0 &&
-          result.data[0].name
-        ) {
-          this.shopName = result?.data[0].name;
+        if (!result.error && result.data && result.data.length > 0) {
+          const rows = result.data as Database['public']['Views']['shop_names']['Row'][];
+          const first = rows[0];
+          if (first?.name) this.shopName = first.name;
         }
       }
     },

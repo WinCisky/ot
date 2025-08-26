@@ -11,6 +11,7 @@ const { t } = useI18n({
 })
 
 const count = ref(0)
+const search = ref<HTMLInputElement | null>(null)
 </script>
     
 <template>
@@ -41,6 +42,7 @@ const count = ref(0)
     
 <script lang="ts">
 import { supabase } from '../supabase'
+import type { Database } from '../types/supabase'
 import { useI18n } from 'vue-i18n';
 
 export default {
@@ -55,7 +57,7 @@ export default {
     },
     methods: {
         waitForSearch() {
-            const inputElem = this.$refs.search as HTMLInputElement;
+            const inputElem = this.$refs.search as HTMLInputElement | undefined;
 
             inputElem?.addEventListener('input', async () => {
                 if (inputElem && inputElem.value != "" && inputElem.value.length >= 2) {
@@ -65,10 +67,10 @@ export default {
                         .from('shop_names')
                         .select()
                         .textSearch('name', `${search_val}:*`);
-                    if (!result.error && result.data.length > 0) {
+                    if (!result.error && result.data && result.data.length > 0) {
                         this.results = [];
-                        result.data.forEach(element => {
-                            if (element.name && element.shop)
+                        (result.data as Database['public']['Views']['shop_names']['Row'][]).forEach(element => {
+                            if (element?.name && element?.shop)
                                 this.results.push({ shop: element.shop, name: element.name })
                         });
                         this.searched = true;

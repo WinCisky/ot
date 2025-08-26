@@ -3,7 +3,8 @@ import '@splidejs/vue-splide/css';
 import Ot from '../components/icons/Ot.vue';
 import { useMeta } from 'vue-meta';
 import { useRoute } from 'vue-router'
-import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import type { Options } from '@splidejs/vue-splide';
 
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n({
@@ -71,7 +72,7 @@ const splide_options: Options = {
       
 <script lang="ts">
 import { supabase } from '../supabase'
-import { Database } from '../types/supabase'
+import type { Database } from '../types/supabase'
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 export default {
@@ -98,13 +99,11 @@ export default {
           .select()
           .eq('shop', shop)
 
-        if (
-          result &&
-          result.data?.length &&
-          result.data?.length > 0 &&
-          result.data[0].name
-        )
-          this.name = result?.data[0].name;
+        if (!result.error) {
+          const rows = result.data as Database['public']['Views']['shop_names']['Row'][] | null;
+          const first = rows && rows.length > 0 ? rows[0] : null;
+          if (first?.name) this.name = first.name;
+        }
       }
 
     },
@@ -118,11 +117,7 @@ export default {
           .eq('shop', shop)
           .range(0, 15)
 
-        if (
-          result &&
-          result.data?.length &&
-          result.data?.length > 0
-        ) {
+        if (!result.error && result.data && result.data.length > 0) {
           this.reviews_first_row = result.data.slice(0, Math.min(5, result.data.length));
           // if (this.reviews_first_row.length < 5) {
           //   for (let index = this.reviews_first_row.length; index < 5; index++) {
@@ -130,12 +125,8 @@ export default {
           //     this.reviews_first_row[0].score = 5;
           //   }
           // }
-          if (result.data.length > 5) {
-            this.reviews_second_row = result.data.slice(5, Math.min(10, result.data.length));
-            if (result.data.length > 10) {
-              this.reviews_third_row = result.data.slice(10, result.data.length);
-            }
-          }
+          if (result.data.length > 5) this.reviews_second_row = result.data.slice(5, Math.min(10, result.data.length));
+          if (result.data.length > 10) this.reviews_third_row = result.data.slice(10, result.data.length);
         }
       }
     },
