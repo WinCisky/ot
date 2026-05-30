@@ -95,7 +95,7 @@ export default {
         uuid = this.$route.query.order.toString();
       let descr = (document.getElementById('description') as HTMLInputElement).value;;
       if (uuid && typeof (uuid) === "string") {
-        const REVIEW_URL = "https://review.deno.dev";
+        const REVIEW_URL = "https://opentrust.simo.deno.net";
         await fetch(REVIEW_URL + "/" + uuid, {
           method: "POST",
           mode: "cors",
